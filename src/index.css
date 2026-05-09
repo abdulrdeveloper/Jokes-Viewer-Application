@@ -50,11 +50,12 @@ body {
 
 .joke-card {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  padding: 1.5rem 2rem;
-  border-radius: 16px;
+  padding: 3rem 2rem 2rem 2rem;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.04);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
+  overflow: hidden;
 }
 
 .joke-card:hover {
@@ -65,15 +66,31 @@ body {
 }
 
 .joke-text {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   line-height: 1.6;
-  font-weight: 400;
-  color: #a1a1aa;
+  font-weight: 500;
+  color: #fff;
+  text-align: left;
+}
+
+.joke-categories {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(121, 40, 202, 0.11);
+  color: #7928CA;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 99px;
+  border: 1px solid rgba(121, 40, 202, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .refresh-button {
   background: linear-gradient(180deg, #FF0080, #7928CA);
-  color: #ffffffe7;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   padding: 14px 40px;
@@ -81,18 +98,45 @@ body {
   border-radius: 999px;
   cursor: pointer;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 14px 0 rgba(255, 0, 128, 0.39);
+  position: relative;
+  overflow: hidden;
 }
 
 .refresh-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(122, 0, 61, 0.5);
-  background: linear-gradient(280deg, #FF0080, #7928CA);
-  color: #c7c7c7;
-  filter: brightness(110%);
+  box-shadow: 0 6px 20px rgba(255, 0, 128, 0.5);
+  filter: brightness(115%);
 }
 
 .refresh-button:active {
-  transform: translateY(1px);
+  transform: scale(0.95);
+  filter: brightness(90%);
+}
+
+.refresh-button:active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0.5;
+  }
+  to {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
 }
