@@ -4,18 +4,19 @@ function App() {
   const [joke, setJoke] = useState(null);
 
   const getData = async () => {
+    
     try {
       const res = await fetch(
-        "https://api.freeapi.app/api/v1/public/randomjokes",
+        "https://api.freeapi.app/api/v1/public/randomjokes/joke/random",
       );
       const data = await res.json();
-      const jokes = data.data.data;
-      console.log(jokes);
-      const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+      const randomJoke = data.data;
       setJoke(randomJoke);
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
     }
+    
   };
 
   useEffect(() => {
